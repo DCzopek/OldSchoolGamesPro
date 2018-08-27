@@ -4,29 +4,28 @@
     var canvas;
     var width;
     var height;
-
     const A=[[[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0],],[[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0],],[[0,0,0,0],[0,0,0,0],[1,1,1,1],[0,0,0,0],],[[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0],]];const B=[[[1,0,0],[1,1,1],[0,0,0]],[[0,1,1],[0,1,0],[0,1,0]],[[0,0,0],[1,1,1],[0,0,1]],[[0,1,0],[0,1,0],[1,1,0]]];const C=[[[0,0,1],[1,1,1],[0,0,0]],[[0,1,0],[0,1,0],[0,1,1]],[[0,0,0],[1,1,1],[1,0,0]],[[1,1,0],[0,1,0],[0,1,0]]];const D=[[[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0],]];const E=[[[0,1,1],[1,1,0],[0,0,0]],[[0,1,0],[0,1,1],[0,0,1]],[[0,0,0],[0,1,1],[1,1,0]],[[1,0,0],[1,1,0],[0,1,0]]];const F=[[[0,1,0],[1,1,1],[0,0,0]],[[0,1,0],[0,1,1],[0,1,0]],[[0,0,0],[1,1,1],[0,1,0]],[[0,1,0],[1,1,0],[0,1,0]]];const G=[[[1,1,0],[0,1,1],[0,0,0]],[[0,0,1],[0,1,1],[0,1,0]],[[0,0,0],[1,1,0],[0,1,1]],[[0,1,0],[1,1,0],[1,0,0]]];
 
     // Load the function "init" Once everything loaded
-    document.addEventListener('DOMContentLoaded', init, false);
-
+    document.addEventListener('DOMContentLoaded', init, false);  // <------ MUST HAVE
+    
     function init() 
     {
         canvas = document.querySelector('canvas');
         context = canvas.getContext('2d');
         width = canvas.width;
         height = canvas.height;
+        console.log("WhatEva")
         createBoard()
         
     }
+
  
     function createBoard()
     {
         // 20 x 12   -- lista ma 20 pozycjii kazda pozycja ma 12 pozycji - kazda z tych jest kolorem     
         var v = 0
         var b = 1
-        
-        
         var bHeight = 20 , bWidth = 12
          
         var board = [];
@@ -35,48 +34,49 @@
             board[i] = [];
             for (let j = 0; j < bWidth; j++) {
             
+                
                 board[i][j] = v; 
                 }
              }
-
-             
+     
         console.log(board)
         drawBoard(board)
-
-
     }
 
     function drawBoard(board){
 
         var block = 25
-        var start = 0 , y = 0
+        var x = 0 , y = 0
 
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board[i].length; j++) {
-                console.log("adss")
+                
                 if (board[i][j] == 0) {
                     context.fillStyle = "White"
-                    context.fillRect(start, y, block, block)
-                    context.strokeRect(start, y, block, block)
+                    context.fillRect(x, y, block, block)
+                    context.strokeRect(x, y, block, block)
+                }
+                else
+                {
+                    context.fillStyle = "Black" 
+                    context.fillRect(x, y, block, block)
+                    context.strokeRect(x, y, block, block)
                 }
                 
-                else {
-
-                }
-                start += block
+                x += block
             }
-            start = 0
+            x = 0
             y += block
         }
     }
 
-    // Random number function 
+    // Random nO function
     function rnum(min, max)
     {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-});
+})();
 
 
 /*  - tworzymy liste list klockow,
@@ -198,27 +198,3 @@
     
     
     //     // Random number function 
-    //     function rnum(min, max) {
-    //         return Math.floor(Math.random() * (max - min + 1)) + min;
-    //     }
-    
-    
-    
-    // })();
-    
-    
-    /*  - tworzymy liste list klockow,
-        - klocki kolorujemy a nie rysujemy na nich (to pomoże w ustalaniu zderzeń na dole planszy)
-        - pojedynczy klocek jest listą list 3 x 3 
-        - żeby zacząć rysowanie klocka potrzebna jest pozycja startowa, dlatego musimy utworzyć dwie zmienne (x,y) dotyczące
-        aktualnej pozycji klock, tak żeby rysowanie mogło nastąpić po dodaniu do aktualnej pozycji kształtku klocka, <---- ważne, że ja wiem o co chodzi :D
-        - trzeba opracować sposób na czyszczenie pól po przemieszczeniu lub obrocie klocka,
-        - potrzebne jest również zagęszczenie ruchów, gdyż się z lekka opierdalam 
-        
-        (Dawid)
-    
-        pozdro 600 3 900 
-    
-        iks de hehe 
-        
-         */
