@@ -1,4 +1,44 @@
-body
-{
-    background: black;
+*{
+    text-align: center;
+}
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding-top:0.5em;
+    padding-bottom:0.5em; 
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 35px;
+
+    /* to have it display on the right */
+    /* margin-left: auto; */
+    transition: width 0s;
+    content:url("burger.png");
+}
+nav:hover {
+    width:100%;
+    transition: width 1.5s;
+
+}
+nav:hover{
+    content:none;
+
+
+}
+nav li{
+    list-style: none;
+    padding:0  2em 0 2em;
+}
+
+nav a{
+    text-decoration: none;
+}
+
+
+aside,footer,main,body{
+    margin:0.6em;
+    border:1px solid black;
+
 }
