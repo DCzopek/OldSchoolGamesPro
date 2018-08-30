@@ -1,5 +1,6 @@
 *{
     text-align: center;
+    font-size: 300px; 
 }
 
 
@@ -14,13 +15,14 @@ nav {
 
     /* to have it display on the right */
     /* margin-left: auto; */
+
     transition: width 0s;
     content:url("burger.png");
 }
+
 nav:hover {
     width:100%;
     transition: width 1.5s;
-
 }
 nav:hover{
     content:none;
