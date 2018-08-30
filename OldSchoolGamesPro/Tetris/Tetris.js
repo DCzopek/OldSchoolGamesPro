@@ -16,7 +16,8 @@
         x: 4,
         y: 0
     }
-
+    var speed
+    var interval
     // Load the function "init" Once everything loaded
     document.addEventListener('DOMContentLoaded', init, false);  // <------ MUST HAVE
 
@@ -81,42 +82,54 @@
         randomBlock(board)
     }
 
-
+    
 
 
     function randomBlock(board) {
         l = [A, B, C, D, E, F, G]
         r = rnum(0, l.length - 1)
+        speed = 400
+        // animation and movement
+        document.addEventListener("keydown",moveBlock)
+        clearInterval(interval)
+        interval = setInterval(drawBlock,400);
+        
+    }
 
-        drawBlock()
-        document.addEventListener("keydown",function(){
+    function moveBlock(){
 
-            
-            var keyCode = event.keyCode;
-            var max = move + position.x
+        //moves left or right
+        var keyCode = event.keyCode;
+        var max = move + position.x
 
-            if (keyCode == 39 || keyCode == 68 ){
-                if (!(max >13)){
-                 move  += 1
-                } else{
-                    move = 14-position.x
-                }
+        //right arrow
+        if (keyCode == 39 || keyCode == 68 ){
+            if (!(max >13)){
+             move  += 1
+            } else{
+                move = 14-position.x
             }
-            if (keyCode == 37 || keyCode == 65 ){
-                if (!(max <-3)){
-                    move  -= 1
-                    }else{
-                        move = -4 -position.x
-                    }
-    
-           }
-          
-    
-        })
-        interval_id = window.setInterval(drawBlock,400);
+        }
+
+        //left arrow
+        if (keyCode == 37 || keyCode == 65 ){
+            if (!(max <-3)){
+                move  -= 1
+                }else{
+                    move = -4 -position.x
+                }
+            }  
+
+            //down arrow
+        if(keyCode == 40){
+           // clearInterval(interval)
+            interval = setInterval(drawBlock,200);
+
+        }
     }
 
     function drawBlock() {
+        //animation
         context2.clearRect(0, 0, width, height)
      
 
@@ -171,7 +184,7 @@
                 x: 4,
                 y: 0
             }
-            clearInterval(interval_id)
+            clearInterval(interval)
             randomBlock()
         }
         
