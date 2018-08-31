@@ -16,8 +16,7 @@
         x: 4,
         y: 0
     }
-    var speed
-    var interval
+
     // Load the function "init" Once everything loaded
     document.addEventListener('DOMContentLoaded', init, false);  // <------ MUST HAVE
 
@@ -32,12 +31,12 @@
         height = canvas.height;
         createBoard()
 
+
     }
 
 
     function createBoard() {
-        // 20 x 12   -- lista ma 20 pozycjii kazda pozycja ma 12 pozycji - kazda z tych jest kolorem     
-        var v = 0
+        // 20 x 12   -- lista ma 20 pozycjii kazda pozycja ma 12 pozycji - kazda z tych jest 0 lub 1
         var b = 1
         var bHeight = 20, bWidth = 12
 
@@ -82,63 +81,54 @@
         randomBlock(board)
     }
 
-    
+function moveBlock(){
+  document.addEventListener("keydown",function(){
 
+
+      var keyCode = event.keyCode;
+      var max = move + position.x
+
+      if (keyCode == 39 || keyCode == 68 ){
+          if (!(max >13)){
+           move  += 1
+          } else{
+              move = 14-position.x
+          }
+      }
+      if (keyCode == 37 || keyCode == 65 ){
+          if (!(max <-3)){
+              move  -= 1
+              }else{
+                  move = -4 -position.x
+              }
+}
 
     function randomBlock(board) {
         l = [A, B, C, D, E, F, G]
         r = rnum(0, l.length - 1)
-        speed = 400
-        // animation and movement
-        document.addEventListener("keydown",moveBlock)
-        clearInterval(interval)
-        interval = setInterval(drawBlock,400);
-        
-    }
 
-    function moveBlock(){
+        drawBlock()
 
-        //moves left or right
-        var keyCode = event.keyCode;
-        var max = move + position.x
+        moveBlock()
 
-        //right arrow
-        if (keyCode == 39 || keyCode == 68 ){
-            if (!(max >13)){
-             move  += 1
-            } else{
-                move = 14-position.x
-            }
-        }
 
-        //left arrow
-        if (keyCode == 37 || keyCode == 65 ){
-            if (!(max <-3)){
-                move  -= 1
-                }else{
-                    move = -4 -position.x
-                }
-            }  
+           }
 
-            //down arrow
-        if(keyCode == 40){
-           // clearInterval(interval)
-            interval = setInterval(drawBlock,200);
 
-        }
+        })
+      var a = setInterval(drawBlock,400);
     }
 
     function drawBlock() {
-        //animation
         context2.clearRect(0, 0, width, height)
-     
+
 
         // gets the random block and gets the first position of it
         var block = l[r]
         var new_block = block[0]
         context.fillStyle = "black"
 
-        
+
         // if a "keydown" event change the position with "move"
         position.x = 4 +move
 
@@ -153,12 +143,13 @@
                 }
                 //updates the x each time regardless if its 0 or 1
                 position.x += 1
+
             }
 
             // updates the Y position only if last sub-list had a 1
             // some blocks end in a whole empty sub-list
             if (new_block[i].includes(1)) {
-                position.y += 1 
+                position.y += 1
             }
             // daw the position in the new y line with the updated "keydown" "move"
             position.x = 4 +move
@@ -168,10 +159,10 @@
         // updates the y position  ( animation )
         if (new_block.length == 1){
             // same position if the block is a straight line - wasnt moving before
-            position.y = position.y 
+            position.y = position.y
         }else{
-             position.y -= 1 
-           
+             position.y -= 1
+
         }
 
         console.log(move+position.x)
@@ -184,14 +175,15 @@
                 x: 4,
                 y: 0
             }
-            clearInterval(interval)
+            clearInterval(interval_id)
+
             randomBlock()
         }
-        
+
 
     }
 
-    
+
 
     function checkHit(board, block, position) {
 
@@ -220,18 +212,18 @@
 
 /*  - tworzymy liste list klockow,
     - klocki kolorujemy a nie rysujemy na nich (to pomoże w ustalaniu zderzeń na dole planszy)
-    - pojedynczy klocek jest listą list 3 x 3 
+    - pojedynczy klocek jest listą list 3 x 3
     - żeby zacząć rysowanie klocka potrzebna jest pozycja startowa, dlatego musimy utworzyć dwie zmienne (x,y) dotyczące
     aktualnej pozycji klock, tak żeby rysowanie mogło nastąpić po dodaniu do aktualnej pozycji kształtku klocka, <---- ważne, że ja wiem o co chodzi :D
     - trzeba opracować sposób na czyszczenie pól po przemieszczeniu lub obrocie klocka,
-    - potrzebne jest również zagęszczenie ruchów, gdyż się z lekka opierdalam 
-    
+    - potrzebne jest również zagęszczenie ruchów, gdyż się z lekka opierdalam
+
     (Dawid)
 
-    pozdro 600 3 900 
+    pozdro 600 3 900
 
-    iks de hehe 
-    
+    iks de hehe
+
      */
 
     // (function () {
@@ -258,7 +250,7 @@
     //         // console.log(canvas,context,width,height)
 
 
-    //         //call a function at a certain interval   - eg 33 milliseconds 
+    //         //call a function at a certain interval   - eg 33 milliseconds
     //         // interval_id = window.setInterval(draw, 33);
     //         createBoard();
     //         // draw()
@@ -336,4 +328,4 @@
 
 
 
-    //     // Random number function 
+    //     // Random number function
