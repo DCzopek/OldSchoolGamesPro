@@ -91,13 +91,21 @@
         speed = 400
         // animation and movement
         document.addEventListener("keydown",moveBlock)
+        document.addEventListener("keyup",slow)
         clearInterval(interval)
         interval = setInterval(drawBlock,400);
         
     }
 
+    function slow () {
+        var keyCode = event.keyCode;
+        if (keyCode == 40){
+            clearInterval(interval)
+            interval = setInterval(drawBlock,400);
+            speed = 0
+    }
+}
     function moveBlock(){
-
         //moves left or right
         var keyCode = event.keyCode;
         var max = move + position.x
@@ -120,12 +128,13 @@
                 }
             }  
 
-            //down arrow
-        if(keyCode == 40){
-           // clearInterval(interval)
-            interval = setInterval(drawBlock,200);
-
-        }
+    //moves down
+    if (keyCode == 40 && speed < 1){
+        console.log("123asd")
+        clearInterval(interval)
+        interval = setInterval(drawBlock,100);
+        speed +=2
+    }
     }
 
     function drawBlock() {
