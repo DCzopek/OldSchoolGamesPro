@@ -1,34 +1,33 @@
 *{
-    text-align: center;
-    font-size: 300px; 
+    text-align: center; 
 }
 
 
 nav {
     display: flex;
     justify-content: center;
-    padding-top:0.5em;
-    padding-bottom:0.5em; 
-    /* margin-left: auto;
-    margin-right: auto; */
-    width: 35px;
+    padding: 0.5em 0 0.5em 0.5em;
+     
+    /* width: 2em; */
 
-    /* to have it display on the right */
-    /* margin-left: auto; */
+  
 
     transition: width 0s;
-    content:url("burger.png");
+    /* content:url("burger.png"); */
+
+
+      /* to have it display on the right */
+    /* margin-left: auto; */
 }
 
 nav:hover {
-    width:100%;
     transition: width 1.5s;
-}
-nav:hover{
+    width:100%;
     content:none;
-
-
+    padding: 1.5em;
 }
+
+
 nav li{
     list-style: none;
     padding:0  2em 0 2em;
@@ -44,3 +43,4 @@ aside,footer,main,body{
     border:1px solid black;
 
 }
+animatecss-bounceOutDown
