@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <a id="burger" onclick = "show()" ></a>
 
     <nav>
         <li><a href="index.html">Main</a></li>
@@ -39,5 +40,24 @@
 
 
 </body>
+<script> 
 
+    function show(){
+        
+        var nav = document.querySelector("nav")
+            if(nav.style.height == "150px"){
+                nav.style.height = "0"
+                nav.style.padding = "0"
+    
+                
+    
+            }
+            else{
+            nav.style.height = "150px"
+            nav.style.padding = "0.5em"
+            }
+    
+    }
+    
+    </script>
 </html>

@@ -1,4 +1,4 @@
-*{
+/* *{
     text-align: center; 
 }
 
@@ -7,40 +7,91 @@ nav {
     display: flex;
     justify-content: center;
     padding: 0.5em 0 0.5em 0.5em;
-     
-    /* width: 2em; */
-
-  
+    width: 2em;
+    padding: 1.5em;
 
     transition: width 0s;
-    /* content:url("burger.png"); */
+    content:url("burger.png");
 
-
-      /* to have it display on the right */
-    /* margin-left: auto; */
 }
 
 nav:hover {
     transition: width 1.5s;
     width:100%;
     content:none;
-    padding: 1.5em;
 }
 
 
 nav li{
     list-style: none;
     padding:0  2em 0 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav a{
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 1.2em;
+    color: darkred;
     text-decoration: none;
 }
 
+nav a:hover{
+    background-color: lightseagreen;
+    
+}
+nav a:active{
+    background-color: aqua;
+}
+
+aside,footer,main,body{
+    margin:0.6em;
+    border:1px solid black;
+
+} */
+
+
+
+#burger {
+    width:2em;
+    content:url("burger.png");
+}
+
+nav {
+    overflow:hidden;
+    position: absolute;
+    height: 0px;
+    transition: 1s;
+    background-color: lightcoral;
+    border-radius: 1em;
+}
+
+nav li{
+    list-style: none;
+    padding:0.5em  0 0.5em 0;
+
+}
+
+nav a{
+    border-radius: 1em;
+    padding: 0.4em 1em 0.4em 1em;
+    font-size: 1.2em;
+    color: darkred;
+    text-decoration: none;
+}
+
+nav a:hover{
+    background-color: lightseagreen;
+    
+}
+nav a:active{
+    background-color: aqua;
+}
 
 aside,footer,main,body{
     margin:0.6em;
     border:1px solid black;
 
 }
-animatecss-bounceOutDown
+

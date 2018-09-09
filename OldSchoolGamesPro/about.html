@@ -10,13 +10,16 @@
 
 <body>
 
-    <nav>
+    <a id="burger" onclick = "show()" ></a>
+
+    <nav  >
         <li><a href="index.html">Main</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="control.html">Controls</a></li>
         <li><a href="trivia.html">Trivia</a></li>
 
     </nav>
+   
     <main>
         <h1>What is this website about!</h1>
 
@@ -40,5 +43,24 @@
 
 
 </body>
+<script> 
 
+function show(){
+    
+    var nav = document.querySelector("nav")
+        if(nav.style.height == "150px"){
+            nav.style.height = "0"
+            nav.style.padding = "0"
+
+            
+
+        }
+        else{
+        nav.style.height = "150px"
+        nav.style.padding = "0.5em"
+        }
+
+}
+
+</script>
 </html>
