@@ -9,55 +9,63 @@
 </head>
 
 <body>
-    <a id="burger" onclick = "show()" ></a>
+    <a id="burger" onclick="show()"></a>
 
     <nav>
-        <li><a href="index.html">Main</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="control.html">Controls</a></li>
-        <li><a href="trivia.html">Trivia</a></li>
-
+        <ul>
+            <li><a href="index.html">Main</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="control.html">Controls</a></li>
+            <li><a href="trivia.html">Trivia</a></li>
+        </ul>
     </nav>
     <main>
         <h1>Trivia facts about some of our recreated games</h1>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate adipisci!
-            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est modi!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate
+            adipisci!
+            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est
+            modi!</p>
 
     </main>
     <aside>
         <h2>aside</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate adipisci!
-            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est modi!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate
+            adipisci!
+            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est
+            modi!</p>
 
     </aside>
     <footer>
         <h2>Footer</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate adipisci!
-            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est modi!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti tempore facere ab cupiditate
+            adipisci!
+            Architecto velit a aspernatur vero provident nobis accusamus? Maxime, illo commodi. Consequuntur vel est
+            modi!</p>
 
     </footer>
 
 
 </body>
-<script> 
+<script>
 
-    function show(){
-        
+    function show() {
+
         var nav = document.querySelector("nav")
-            if(nav.style.height == "150px"){
-                nav.style.height = "0"
-                nav.style.padding = "0"
-    
-                
-    
-            }
-            else{
+        if (nav.style.height == "150px") {
+            nav.style.height = "0"
+            nav.style.padding = "0"
+
+
+
+        }
+        else {
             nav.style.height = "150px"
             nav.style.padding = "0.5em"
-            }
-    
+        }
+
     }
-    
-    </script>
+
+</script>
+
 </html>
