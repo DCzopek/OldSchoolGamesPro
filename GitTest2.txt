@@ -1,4 +1,9 @@
 Hello There 2 !
 jeb sie kurwa gramy!
+<<<<<<< HEAD
 okok
 okok
+=======
+alskjdjlaksnndalksnda
+alskdknalndlaskdnlaks
+>>>>>>> master
