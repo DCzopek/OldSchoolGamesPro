@@ -1,46 +1,193 @@
-*{
-    text-align: center;
-    font-size: 300px; 
+/* *{
+    text-align: center; 
 }
 
 
 nav {
     display: flex;
     justify-content: center;
-    padding-top:0.5em;
-    padding-bottom:0.5em; 
-    /* margin-left: auto;
-    margin-right: auto; */
-    width: 35px;
-
-    /* to have it display on the right */
-    /* margin-left: auto; */
+    padding: 0.5em 0 0.5em 0.5em;
+    width: 2em;
+    padding: 1.5em;
 
     transition: width 0s;
     content:url("burger.png");
+
 }
 
 nav:hover {
-    width:100%;
     transition: width 1.5s;
-}
-nav:hover{
+    width:100%;
     content:none;
-
-
 }
+
+
 nav li{
     list-style: none;
     padding:0  2em 0 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav a{
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 1.2em;
+    color: darkred;
     text-decoration: none;
 }
 
+nav a:hover{
+    background-color: lightseagreen;
+    
+}
+nav a:active{
+    background-color: aqua;
+}
 
 aside,footer,main,body{
     margin:0.6em;
     border:1px solid black;
+
+} */
+
+
+
+#burger {
+    position: fixed;
+    z-index: 999;
+    width:2em;
+    content:url("burger.png");
+}
+
+
+
+/* 
+nav {
+    overflow:hidden;
+    position: absolute;
+    height: 0px;
+    transition: 1s;
+    background-color: lightcoral;
+    border-radius: 1em;
+}
+
+nav li{
+    /* display: inline; */ 
+    /*
+
+    list-style: none;
+    padding:0.5em  0 0.5em 0;
+
+}
+
+nav a{
+    border-radius: 1em;
+    padding: 0.4em 1em 0.4em 1em;
+    font-size: 1.2em;
+    color: darkred;
+    text-decoration: none;
+}
+
+nav a:hover{
+    background-color: lightseagreen;
+    
+}
+nav a:active{
+    background-color: aqua;
+} */
+
+
+
+nav {
+    transition: 1s;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#c11333;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+nav ul{
+    padding: 0;
+    margin: 0;
+    padding-top:5em;
+    left: 0;
+}
+nav li{
+    /* display: inline; */ 
+    
+
+    list-style: none;
+    padding:0.5em  0 0.5em 0;
+
+}
+
+nav a{
+    border-radius: 1em;
+    padding: 0.4em 1em 0.4em 1em;
+    font-size: 1.2em;
+    color:#b0e7f2;
+    text-decoration: none;
+}
+
+nav a:hover{
+    background-color: #e29126;
+    
+}
+nav a:active{
+    background-color: aqua;
+} 
+
+
+
+
+/* 
+background gradient was repeating
+ when page ended, min height and pos relative fix it */
+html{
+    min-height: 100%;
+    background-image: linear-gradient(to bottom right,#f4b642 , #f48942);
+
+    position:relative;
+  }
+  body {
+    height: 100%;
+  }
+
+
+
+
+main,aside,footer{
+    margin-left:2em;
+    margin-right:2em;
+    padding:1em;
+}
+
+
+
+main {
+    text-align: center;
+}
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+figure img {
+width:5em;
+}
+figure{
+    text-align: center;
+}
+
+div a{
+    margin:0.2em;
+    border:0.1px dashed white;
 
 }

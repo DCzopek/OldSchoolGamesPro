@@ -5,10 +5,9 @@
     var canvas2;
     var width;
     var height;
-    const A = [[ [1, 1, 1, 1]], [[0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0],], [[0, 0, 0, 0], [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0],], [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0],]]; const B = [[[1, 0, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 1], [0, 1, 0], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 0, 1]], [[0, 1, 0], [0, 1, 0], [1, 1, 0]]]; const C = [[[0, 0, 1], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 0], [0, 1, 1]], [[0, 0, 0], [1, 1, 1], [1, 0, 0]], [[1, 1, 0], [0, 1, 0], [0, 1, 0]]]; const D = [[[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0],]]; const E = [[[0, 1, 1], [1, 1, 0], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 0, 1]], [[0, 0, 0], [0, 1, 1], [1, 1, 0]], [[1, 0, 0], [1, 1, 0], [0, 1, 0]]]; const F = [[[0, 1, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 0], [0, 1, 0]]]; const G = [[[1, 1, 0], [0, 1, 1], [0, 0, 0]], [[0, 0, 1], [0, 1, 1], [0, 1, 0]], [[0, 0, 0], [1, 1, 0], [0, 1, 1]], [[0, 1, 0], [1, 1, 0], [1, 0, 0]]];
+    const A = [[[1, 1, 1, 1]], [[0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0],], [[0, 0, 0, 0], [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0],], [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0],]]; const B = [[[1, 0, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 1], [0, 1, 0], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 0, 1]], [[0, 1, 0], [0, 1, 0], [1, 1, 0]]]; const C = [[[0, 0, 1], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 0], [0, 1, 1]], [[0, 0, 0], [1, 1, 1], [1, 0, 0]], [[1, 1, 0], [0, 1, 0], [0, 1, 0]]]; const D = [[[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0],]]; const E = [[[0, 1, 1], [1, 1, 0], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 0, 1]], [[0, 0, 0], [0, 1, 1], [1, 1, 0]], [[1, 0, 0], [1, 1, 0], [0, 1, 0]]]; const F = [[[0, 1, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 0], [0, 1, 0]]]; const G = [[[1, 1, 0], [0, 1, 1], [0, 0, 0]], [[0, 0, 1], [0, 1, 1], [0, 1, 0]], [[0, 0, 0], [1, 1, 0], [0, 1, 1]], [[0, 1, 0], [1, 1, 0], [1, 0, 0]]];
 
     var move = 0
-    var downT
 
     var l = [A, B, C, D, E, F, G]
     var r
@@ -81,42 +80,59 @@
         randomBlock(board)
     }
 
-function moveBlock(){
-  document.addEventListener("keydown",function(){
 
 
-      var keyCode = event.keyCode;
-      var max = move + position.x
-
-      if (keyCode == 39 || keyCode == 68 ){
-          if (!(max >13)){
-           move  += 1
-          } else{
-              move = 14-position.x
-          }
-      }
-      if (keyCode == 37 || keyCode == 65 ){
-          if (!(max <-3)){
-              move  -= 1
-              }else{
-                  move = -4 -position.x
-              }
-}
 
     function randomBlock(board) {
         l = [A, B, C, D, E, F, G]
         r = rnum(0, l.length - 1)
+        speed = 400
+        // animation and movement
+        document.addEventListener("keydown", moveBlock)
+        document.addEventListener("keyup", slow)
+        clearInterval(interval)
+        interval = setInterval(drawBlock, 400);
 
-        drawBlock()
+    }
 
-        moveBlock()
+    function slow() {
+        var keyCode = event.keyCode;
+        if (keyCode == 40) {
+            clearInterval(interval)
+            interval = setInterval(drawBlock, 400);
+            speed = 0
+        }
+    }
+    function moveBlock() {
+        //moves left or right
+        var keyCode = event.keyCode;
+        var max = move + position.x
 
+        //right arrow
+        if (keyCode == 39 || keyCode == 68) {
+            if (!(max > 13)) {
+                move += 1
+            } else {
+                move = 14 - position.x
+            }
+        }
 
-           }
+        //left arrow
+        if (keyCode == 37 || keyCode == 65) {
+            if (!(max < -3)) {
+                move -= 1
+            } else {
+                move = -4 - position.x
+            }
+        }
 
-
-        })
-      var a = setInterval(drawBlock,400);
+        //moves down
+        if (keyCode == 40 && speed < 1) {
+            console.log("123asd")
+            clearInterval(interval)
+            interval = setInterval(drawBlock, 100);
+            speed += 2
+        }
     }
 
     function drawBlock() {
@@ -130,7 +146,7 @@ function moveBlock(){
 
 
         // if a "keydown" event change the position with "move"
-        position.x = 4 +move
+        position.x = 4 + move
 
 
         //drawing the block
@@ -152,24 +168,24 @@ function moveBlock(){
                 position.y += 1
             }
             // daw the position in the new y line with the updated "keydown" "move"
-            position.x = 4 +move
+            position.x = 4 + move
         }
 
 
         // updates the y position  ( animation )
-        if (new_block.length == 1){
+        if (new_block.length == 1) {
             // same position if the block is a straight line - wasnt moving before
             position.y = position.y
-        }else{
-             position.y -= 1
+        } else {
+            position.y -= 1
 
         }
 
-        console.log(move+position.x)
+        console.log(move + position.x)
 
         // Temporary Makes the blocks reset
 
-        if (position.y >19){
+        if (position.y > 19) {
             context2.clearRect(0, 0, width, height)
             position = {
                 x: 4,
