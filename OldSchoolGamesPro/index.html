@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="screen" href="mainStyle.css" />
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>OldSchoolGames</title>
 </head>
 
 <body>
-    <a id="burger" onclick="show()"></a>
-
+    <!-- <a id="burger" onclick="show()"></a> -->
+<a id="burger"></a>
     <nav>
         <ul>
             <li><a href="index.html">Main</a></li>
@@ -96,31 +96,46 @@
 </body>
 <script>
 
-    function show() {
 
-        // var nav = document.querySelector("nav")
-        // if (nav.style.height == "150px") {
-        //     nav.style.height = "0"
-        //     nav.style.padding = "0"
+    //     //$("#slide").animate({width:'toggle'},350);
+    $(document).ready(function(){
+  $("#burger").click(function(){
+    $("nav").animate({
+      width: "toggle"
+    });
+  });
+});
 
-        // }
-        // else {
-        //     nav.style.height = "150px"
-        //     nav.style.padding = "0.5em"
-        // }
 
-        var nav = document.querySelector("nav")
-        if (nav.style.width == "150px") {
-            nav.style.width = "0"
-            nav.style.padding = "0"
 
-        }
-        else {
-            nav.style.width = "150px"
-            nav.style.padding = "0.5em"
-        } 
 
-    }
+
+
+    // function show() {
+
+    //     // var nav = document.querySelector("nav")
+    //     // if (nav.style.height == "150px") {
+    //     //     nav.style.height = "0"
+    //     //     nav.style.padding = "0"
+
+    //     // }
+    //     // else {
+    //     //     nav.style.height = "150px"
+    //     //     nav.style.padding = "0.5em"
+    //     // }
+
+    //     var nav = document.querySelector("nav")
+    //     if (nav.style.width == "150px") {
+    //         nav.style.width = "0"
+    //         nav.style.padding = "0"
+
+    //     }
+    //     else {
+    //         nav.style.width = "150px"
+    //         nav.style.padding = "0.5em"
+    //     } 
+
+    // }
 
 </script>
 
